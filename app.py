@@ -27,16 +27,56 @@ MYSQL_USER = 'root'
 MYSQL_PASSWORD = 'Kunjal123$'  
 MYSQL_DB = 'notes_db'
 
-def get_db_connection():
+import os
+import pymysql
+
+def get_db_connection(db_name=None):
     return pymysql.connect(
         host=os.environ.get('MYSQL_HOST', 'localhost'),
         user=os.environ.get('MYSQL_USER', 'root'),
         password=os.environ.get('MYSQL_PASSWORD', ''),
-        database=os.environ.get('MYSQL_DB', 'notes_db'),
+        database=db_name or os.environ.get('MYSQL_DB', 'notes_db'),
         port=int(os.environ.get('MYSQL_PORT', 3306)),
-        ssl={'ssl': True},  # Required for Aiven MySQL
+        ssl={'ssl': True},
         cursorclass=pymysql.cursors.DictCursor
     )
+
+def init_db():
+    target_db = os.environ.get('MYSQL_DB', 'notes_db')
+    
+    # 1. Connect without selecting a database first to ensure the database exists
+    conn = get_db_connection(db_name='defaultdb')
+    with conn.cursor() as cursor:
+        cursor.execute(f"CREATE DATABASE IF NOT EXISTS {target_db};")
+    conn.commit()
+    conn.close()
+
+    # 2. Connect to target database and create tables
+    conn = get_db_connection(db_name=target_db)
+    with conn.cursor() as cursor:
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS users (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                username VARCHAR(100) NOT NULL UNIQUE,
+                email VARCHAR(100) NOT NULL UNIQUE,
+                password VARCHAR(255) NOT NULL
+            );
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS notes (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                title VARCHAR(100) NOT NULL,
+                content TEXT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                user_id INT NOT NULL,
+                FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+            );
+        """)
+    conn.commit()
+    conn.close()
+
+# Initialize database tables on startup
+init_db()
 
 def login_required(f):
     @wraps(f)
