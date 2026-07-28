@@ -4,6 +4,7 @@ from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadTimeSignature
 import pymysql
 from functools import wraps
+import os
 
 app = Flask(__name__)
 app.secret_key = '12345' 
@@ -28,10 +29,12 @@ MYSQL_DB = 'notes_db'
 
 def get_db_connection():
     return pymysql.connect(
-        host=MYSQL_HOST,
-        user=MYSQL_USER,
-        password=MYSQL_PASSWORD,
-        database=MYSQL_DB,
+        host=os.environ.get('MYSQL_HOST', 'localhost'),
+        user=os.environ.get('MYSQL_USER', 'root'),
+        password=os.environ.get('MYSQL_PASSWORD', ''),
+        database=os.environ.get('MYSQL_DB', 'notes_db'),
+        port=int(os.environ.get('MYSQL_PORT', 3306)),
+        ssl={'ssl': True},  # Required for Aiven MySQL
         cursorclass=pymysql.cursors.DictCursor
     )
 
