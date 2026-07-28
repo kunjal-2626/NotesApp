@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block title %}Create Account - NotesApp{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center my-4">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+        
+        <!-- Registration Card -->
+        <div class="card card-pink border-0 p-3 p-sm-4">
+            <div class="card-body">
+                
+                <!-- Icon & Title -->
+                <div class="text-center mb-4">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" 
+                         style="width: 60px; height: 60px; background-color: var(--pink-light-bg); color: var(--pink-accent);">
+                        <i class="bi bi-person-plus-fill fs-2"></i>
+                    </div>
+                    <h3 class="fw-bold text-dark mb-1">Create Account</h3>
+                    <p class="text-muted small mb-0">Join NotesApp to start organizing your notes</p>
+                </div>
+
+                <!-- Registration Form -->
+                <form action="{{ url_for('register') }}" method="POST" id="registerForm">
+                    
+                    <!-- Username -->
+                    <div class="mb-3">
+                        <label for="username" class="form-label small fw-bold text-secondary">USERNAME</label>
+                        <div class="input-group">
+                            <span class="input-group-text input-group-text-pink">
+                                <i class="bi bi-person"></i>
+                            </span>
+                            <input type="text" class="form-control form-control-pink" id="username" name="username" placeholder="Choose a username" required>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label small fw-bold text-secondary">EMAIL ADDRESS</label>
+                        <div class="input-group">
+                            <span class="input-group-text input-group-text-pink">
+                                <i class="bi bi-envelope"></i>
+                            </span>
+                            <input type="email" class="form-control form-control-pink" id="email" name="email" placeholder="name@example.com" required>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label for="password" class="form-label small fw-bold text-secondary">PASSWORD</label>
+                        <div class="input-group">
+                            <span class="input-group-text input-group-text-pink">
+                                <i class="bi bi-lock"></i>
+                            </span>
+                            <input type="password" class="form-control form-control-pink" id="password" name="password" placeholder="Create a password" minlength="6" required>
+                        </div>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="mb-4">
+                        <label for="confirm_password" class="form-label small fw-bold text-secondary">CONFIRM PASSWORD</label>
+                        <div class="input-group">
+                            <span class="input-group-text input-group-text-pink">
+                                <i class="bi bi-shield-lock"></i>
+                            </span>
+                            <input type="password" class="form-control form-control-pink" id="confirm_password" name="confirm_password" placeholder="Repeat your password" required>
+                        </div>
+                        <div id="passwordError" class="text-danger small mt-1 d-none">
+                            Passwords do not match.
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-pink-primary w-100 py-2 d-flex align-items-center justify-content-center gap-2">
+                        <span>Sign Up</span>
+                        <i class="bi bi-arrow-right-short fs-5"></i>
+                    </button>
+                </form>
+<!-- Login Redirect Link -->
+<div class="text-center mt-4 pt-3 border-top" style="border-color: var(--pink-border) !important;">
+    <p class="text-muted small mb-0">
+        Already have an account? 
+        <a href="{{ url_for('home') }}" class="fw-bold text-decoration-none" style="color: var(--pink-accent);">Sign In</a>
+    </p>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Password Match Validation Script -->
+<script>
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm_password').value;
+    const errorDiv = document.getElementById('passwordError');
+
+    if (password !== confirmPassword) {
+        e.preventDefault();
+        errorDiv.classList.remove('d-none');
+    } else {
+        errorDiv.classList.add('d-none');
+    }
+});
+</script>
+{% endblock %}

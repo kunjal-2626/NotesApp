@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Contact Us - NotesApp{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center my-4">
+    <div class="col-12 col-md-10 col-lg-8">
+        <div class="card card-pink border-0 p-3 p-sm-4">
+            <div class="card-body">
+                
+                <div class="text-center mb-4">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" 
+                         style="width: 60px; height: 60px; background-color: var(--pink-light-bg); color: var(--pink-accent);">
+                        <i class="bi bi-envelope-heart-fill fs-2"></i>
+                    </div>
+                    <h3 class="fw-bold text-dark mb-1">Get in Touch</h3>
+                    <p class="text-muted small mb-0">Have questions or feedback? Send us a message below.</p>
+                </div>
+
+                <form action="{{ url_for('contact') }}" method="POST">
+                    
+                    <div class="row g-3 mb-3">
+                        <div class="col-12 col-md-6">
+                            <label for="name" class="form-label small fw-bold text-secondary">YOUR NAME</label>
+                            <div class="input-group">
+                                <span class="input-group-text input-group-text-pink">
+                                    <i class="bi bi-person"></i>
+                                </span>
+                                <input type="text" class="form-control form-control-pink" id="name" name="name" placeholder="John Doe" required>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label for="email" class="form-label small fw-bold text-secondary">YOUR EMAIL</label>
+                            <div class="input-group">
+                                <span class="input-group-text input-group-text-pink">
+                                    <i class="bi bi-envelope"></i>
+                                </span>
+                                <input type="email" class="form-control form-control-pink" id="email" name="email" placeholder="name@example.com" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="subject" class="form-label small fw-bold text-secondary">SUBJECT</label>
+                        <div class="input-group">
+                            <span class="input-group-text input-group-text-pink">
+                                <i class="bi bi-chat-left-dots"></i>
+                            </span>
+                            <input type="text" class="form-control form-control-pink" id="subject" name="subject" placeholder="How can we help?" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="message" class="form-label small fw-bold text-secondary">MESSAGE</label>
+                        <textarea class="form-control form-control-pink" id="message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-pink-primary w-100 py-2 d-flex align-items-center justify-content-center gap-2">
+                        <i class="bi bi-send-fill"></i>
+                        <span>Send Message</span>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

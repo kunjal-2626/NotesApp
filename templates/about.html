@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block title %}About - NotesApp{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center my-4">
+    <div class="col-12 col-lg-10">
+
+        <div class="card card-pink border-0 mb-4 overflow-hidden">
+            <div class="card-body p-4 p-md-5 text-center">
+                <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" 
+                     style="width: 64px; height: 64px; background-color: var(--pink-light-bg); color: var(--pink-accent);">
+                    <i class="bi bi-journal-heart-fill fs-2"></i>
+                </div>
+                <h2 class="fw-bold text-dark mb-2">About NotesApp</h2>
+                <p class="text-muted mx-auto" style="max-width: 650px;">
+                    Your minimalist, secure, and beautiful space to capture ideas, manage daily tasks, and organize thoughts effortlessly.
+                </p>
+            </div>
+        </div>
+
+        <!-- Our Mission & Purpose -->
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-md-6">
+                <div class="card card-pink border-0 h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="rounded-3 p-2 d-flex align-items-center justify-content-center" 
+                                 style="background-color: var(--pink-light-bg); color: var(--pink-accent); width: 42px; height: 42px;">
+                                <i class="bi bi-lightbulb fs-4"></i>
+                            </div>
+                            <h4 class="fw-bold text-dark mb-0">Our Mission</h4>
+                        </div>
+                        <p class="text-secondary small mb-0">
+                            We believe that capturing ideas should be friction-free and delightful. NotesApp was created to offer a clean, distraction-free environment that helps you stay organized without complex menus or overwhelming configurations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="card card-pink border-0 h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="rounded-3 p-2 d-flex align-items-center justify-content-center" 
+                                 style="background-color: var(--pink-light-bg); color: var(--pink-accent); width: 42px; height: 42px;">
+                                <i class="bi bi-shield-check fs-4"></i>
+                            </div>
+                            <h4 class="fw-bold text-dark mb-0">Privacy First</h4>
+                        </div>
+                        <p class="text-secondary small mb-0">
+                            Your notes are personal, and we keep them that way. With secure session authentication and individual user account isolation, your private data remains protected and accessible only by you.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Features Section -->
+        <div class="card card-pink border-0 mb-4">
+            <div class="card-body p-4 p-md-5">
+                <h4 class="fw-bold text-dark mb-4 text-center">What Makes NotesApp Special?</h4>
+                
+                <div class="row g-4">
+                    <div class="col-12 col-md-4">
+                        <div class="text-center p-2">
+                            <i class="bi bi-search fs-2 mb-2 d-block" style="color: var(--pink-accent);"></i>
+                            <h6 class="fw-bold text-dark">Instant Search</h6>
+                            <p class="text-muted small mb-0">Find any note in real-time as you type, searching through both titles and body text instantly.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <div class="text-center p-2">
+                            <i class="bi bi-phone fs-2 mb-2 d-block" style="color: var(--pink-accent);"></i>
+                            <h6 class="fw-bold text-dark">Responsive Design</h6>
+                            <p class="text-muted small mb-0">Engineered with Bootstrap 5 to look stunning whether you're on desktop, tablet, or smartphone.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <div class="text-center p-2">
+                            <i class="bi bi-palette fs-2 mb-2 d-block" style="color: var(--pink-accent);"></i>
+                            <h6 class="fw-bold text-dark">Blush Aesthetic</h6>
+                            <p class="text-muted small mb-0">Designed with a warm baby-pink palette and clean typography for a relaxing writing experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Built With Technology Stack -->
+        <div class="card card-pink border-0 mb-4">
+            <div class="card-body p-4">
+                <h5 class="fw-bold text-dark mb-3 text-center">Built With Modern Tech</h5>
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                    <span class="badge px-3 py-2 fw-medium rounded-pill" style="background-color: var(--pink-light-bg); color: var(--pink-accent);">Python & Flask</span>
+                    <span class="badge px-3 py-2 fw-medium rounded-pill" style="background-color: var(--pink-light-bg); color: var(--pink-accent);">MySQL Database</span>
+                    <span class="badge px-3 py-2 fw-medium rounded-pill" style="background-color: var(--pink-light-bg); color: var(--pink-accent);">Bootstrap 5</span>
+                    <span class="badge px-3 py-2 fw-medium rounded-pill" style="background-color: var(--pink-light-bg); color: var(--pink-accent);">Vanilla JavaScript</span>
+                    <span class="badge px-3 py-2 fw-medium rounded-pill" style="background-color: var(--pink-light-bg); color: var(--pink-accent);">Jinja2 Templates</span>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+</div>
+{% endblock %}
